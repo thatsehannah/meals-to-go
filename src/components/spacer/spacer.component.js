@@ -25,7 +25,7 @@ const getVariant = (position, size, theme) => {
 };
 
 export const Spacer = styled.View`
-  //example output: margin-top: 16px
+  /* example output: margin-top: 16px */
   ${({ position, size, theme }) => getVariant(position, size, theme)}
 `;
 
