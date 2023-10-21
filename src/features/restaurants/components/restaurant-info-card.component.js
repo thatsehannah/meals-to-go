@@ -80,7 +80,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             {isClosedTemporarily && (
               <Closed>
                 <Text style={{ color: "red" }}>CLOSED TEMPORARILY</Text>
-                <Spacer variant={"left.large"} />
+                <Spacer position="left" size="large" />
                 <Image
                   style={{ width: 15, height: 15 }}
                   source={{ uri: icon }}
