@@ -41,7 +41,6 @@ const Rating = styled.View`
 
 const Closed = styled.View`
   flex-direction: row;
-  justify-content: space-evenly;
   align-items: center;
 `;
 

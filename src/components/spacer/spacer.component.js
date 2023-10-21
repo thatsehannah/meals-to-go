@@ -15,13 +15,17 @@ const positionVariant = {
 };
 
 //builds the appropriate css property based off of the props position and size
+//in the videos, they're wrapping the Spacer around the element they want to
+//enforce spacing. I'm not doing that; I'm using it similarily how it a Spacer
+//View is used in iOS
 const getVariant = (position, size, theme) => {
   const property = positionVariant[position];
-  const value = theme.space[sizeVariant[size]];
-  return `${property}:${value}`;
+  const spacing = theme.space[sizeVariant[size]];
+  return `${property}:${spacing}`;
 };
 
 export const Spacer = styled.View`
+  //example output: margin-top: 16px
   ${({ position, size, theme }) => getVariant(position, size, theme)}
 `;
 
