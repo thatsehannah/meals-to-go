@@ -1,5 +1,5 @@
 import { get } from "react-native/Libraries/TurboModule/TurboModuleRegistry";
-import styled from "styled-components/native";
+import styled, { useTheme } from "styled-components/native";
 
 const sizeVariant = {
   small: 1,
@@ -24,10 +24,16 @@ const getVariant = (position, size, theme) => {
   return `${property}:${spacing}`;
 };
 
-export const Spacer = styled.View`
-  /* example output: margin-top: 16px */
-  ${({ position, size, theme }) => getVariant(position, size, theme)}
+const SpacerView = styled.View`
+  ${({ variant }) => variant}
 `;
+
+export const Spacer = ({ position, size }) => {
+  const theme = useTheme();
+  const variant = getVariant(position, size, theme);
+
+  return <SpacerView variant={variant} />;
+};
 
 Spacer.defaultProps = {
   position: "top",
