@@ -1,13 +1,9 @@
-import { FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { SafeAreaContainer } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import {
-  SafeAreaContainer,
-  SearchContainer,
-  RestaurantList,
-} from "./restaurants.screen.styles";
+import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
 
 export const RestaurantsScreen = () => {
   return (
