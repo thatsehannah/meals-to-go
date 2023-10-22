@@ -36,7 +36,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Card elevation={4}>
         <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
         <Info>
-          <Text>{name}</Text>
+          <Text variant="label">{name}</Text>
           <Row>
             <Rating>
               {ratingArray.map((index) => (
