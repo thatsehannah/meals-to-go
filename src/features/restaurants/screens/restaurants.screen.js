@@ -6,6 +6,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import {
   SafeAreaContainer,
   SearchContainer,
+  RestaurantList,
 } from "./restaurants.screen.styles";
 
 export const RestaurantsScreen = () => {
@@ -15,7 +16,7 @@ export const RestaurantsScreen = () => {
         <SearchContainer>
           <Searchbar placeholder="Search" />
         </SearchContainer>
-        <FlatList
+        <RestaurantList
           data={[
             { name: 1 },
             { name: 2 },
@@ -31,7 +32,6 @@ export const RestaurantsScreen = () => {
             </>
           )}
           keyExtractor={(item) => item.name}
-          contentContainerStyle={{ padding: 16 }}
         />
       </SafeAreaContainer>
     </>
