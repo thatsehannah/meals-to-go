@@ -1,18 +1,22 @@
 import styled from "styled-components/native";
 import { Card } from "react-native-paper";
 
+export const RestaurantCard = styled(Card)`
+  background-color: ${({ theme }) => theme.colors.bg.primary};
+`;
+
 export const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.ui.quaternary};
+  padding: ${({ theme }) => theme.space[3]};
+  background-color: ${({ theme }) => theme.colors.ui.quaternary};
 `;
 
 export const Info = styled.View`
-  padding: ${(props) => props.theme.space[3]};
+  padding: ${({ theme }) => theme.space[3]};
 `;
 
 export const Address = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ theme }) => theme.fontSizes.caption};
 `;
 
 export const Row = styled.View`
@@ -23,8 +27,8 @@ export const Row = styled.View`
 
 export const Rating = styled.View`
   flex-direction: row;
-  padding-top: ${(props) => props.theme.space[2]};
-  padding-bottom: ${(props) => props.theme.space[2]};
+  padding-top: ${({ theme }) => theme.space[2]};
+  padding-bottom: ${({ theme }) => theme.space[2]};
 `;
 
 export const Closed = styled.View`

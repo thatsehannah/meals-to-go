@@ -1,5 +1,4 @@
 import { View, Image } from "react-native";
-import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -12,6 +11,7 @@ import {
   Rating,
   Closed,
   Icon,
+  RestaurantCard,
 } from "./restaurant-info-card.styles";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -33,7 +33,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <>
-      <Card elevation={4}>
+      <RestaurantCard elevation={4}>
         <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
         <Info>
           <Text variant="label">{name}</Text>
@@ -58,7 +58,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Row>
           <Address>{address}</Address>
         </Info>
-      </Card>
+      </RestaurantCard>
     </>
   );
 };
