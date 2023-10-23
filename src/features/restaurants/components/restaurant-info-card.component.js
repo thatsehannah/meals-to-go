@@ -12,6 +12,7 @@ import {
   Closed,
   Icon,
   RestaurantCard,
+  IconContainer,
 } from "./restaurant-info-card.styles";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
@@ -43,18 +44,20 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 <SvgXml key={index} xml={star} width={20} height={20} />
               ))}
             </Rating>
-            {isOpenNow && (
-              <View>
-                <SvgXml xml={open} width={25} height={25} />
-              </View>
-            )}
-            {isClosedTemporarily && (
-              <Closed>
-                <Text variant="error">CLOSED TEMPORARILY</Text>
-                <Spacer position="left" size="large" />
-                <Icon source={{ uri: icon }} />
-              </Closed>
-            )}
+            <IconContainer>
+              {isOpenNow && (
+                <View>
+                  <SvgXml xml={open} width={25} height={25} />
+                </View>
+              )}
+              {isClosedTemporarily && (
+                <Closed>
+                  <Text variant="error">CLOSED TEMPORARILY</Text>
+                </Closed>
+              )}
+              <Spacer position="left" size="large" />
+              <Icon source={{ uri: icon }} />
+            </IconContainer>
           </Row>
           <Address>{address}</Address>
         </Info>

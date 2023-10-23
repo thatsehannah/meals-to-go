@@ -20,6 +20,7 @@ export const Address = styled.Text`
 `;
 
 export const Row = styled.View`
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -34,6 +35,13 @@ export const Rating = styled.View`
 export const Closed = styled.View`
   flex-direction: row;
   align-items: center;
+`;
+
+export const IconContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
 `;
 
 export const Icon = styled.Image`
