@@ -20,7 +20,6 @@ export const Address = styled.Text`
 `;
 
 export const Row = styled.View`
-  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
