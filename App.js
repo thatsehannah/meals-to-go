@@ -10,6 +10,8 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { loadFonts } from "./src/utils/loadFonts";
 import { SafeAreaContainer } from "./src/components/utility/safe-area.component";
 
+import { restaurantRequest } from "./src/services/restaurant/restaurants.service";
+
 const SettingsScreen = () => {
   return (
     <SafeAreaContainer
