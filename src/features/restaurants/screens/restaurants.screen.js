@@ -1,13 +1,14 @@
 import { useContext } from "react";
-import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeAreaContainer } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { SearchContainer, RestaurantList } from "./restaurants.screen.styles";
+import { RestaurantList } from "./restaurants.screen.styles";
 
 import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
 import { CenteredView } from "../../../components/utility/centered-view.component";
+import { Search } from "../components/search.component";
 
 export const RestaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
@@ -23,9 +24,7 @@ export const RestaurantsScreen = () => {
   return (
     <>
       <SafeAreaContainer>
-        <SearchContainer>
-          <Searchbar placeholder="Search" />
-        </SearchContainer>
+        <Search />
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => {
