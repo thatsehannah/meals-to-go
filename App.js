@@ -10,6 +10,7 @@ import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurant
 import { loadFonts } from "./src/utils/loadFonts";
 import { SafeAreaContainer } from "./src/components/utility/safe-area.component";
 import { RestaurantsContextProvider } from "./src/services/restaurant/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 const SettingsScreen = () => {
   return (
@@ -61,15 +62,17 @@ export default App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantsContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator screenOptions={createScreenOptions}>
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={MapScreen} />
-              <Tab.Screen name="Settings" component={SettingsScreen} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantsContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator screenOptions={createScreenOptions}>
+                <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+                <Tab.Screen name="Map" component={MapScreen} />
+                <Tab.Screen name="Settings" component={SettingsScreen} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
