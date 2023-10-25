@@ -9,8 +9,12 @@ import { locations } from "./location.mock";
 export const locationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm];
-    if (!locationMock) reject("not found");
 
+    if (!locationMock) {
+      reject("not found");
+    }
+
+    console.log("Location found");
     resolve(locationMock);
   });
 };
@@ -19,7 +23,8 @@ export const locationRequest = (searchTerm) => {
 //made in the search function and return the lat and lng properties of the
 //result from the location request function
 export const locationTransform = (result) => {
-  const { geometry = {} } = camelize(result.results)[0];
+  const formattedResponse = camelize(result);
+  const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
 
   return { lat, lng };
