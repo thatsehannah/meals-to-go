@@ -59,6 +59,9 @@ export default App = () => {
 
   const Tab = createBottomTabNavigator();
 
+  // it makes senses to make the location context provider the top level provider
+  // because the restaurants context provider will need the data provided from it
+  // to get the restaurants from the particular location
   return (
     <>
       <ThemeProvider theme={theme}>

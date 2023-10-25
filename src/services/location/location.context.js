@@ -24,18 +24,16 @@ export const LocationContextProvider = ({ children }) => {
       .then((result) => {
         setIsLoading(false);
         setLocation(result); //now that we have what we're looking for, set the location state to the result of the transformation (which returns an object)
-        console.log(result);
       })
       .catch((err) => {
         setIsLoading(false);
         setError(err);
-        console.log(err);
       });
   };
 
   return (
     <LocationContext.Provider
-      value={{ isLoading, error, location, search: onSearch, keyword }} //when we use this context, this is the object that will be exposed to whatever service we want to use the context in
+      value={{ isLoading, error, location, search: onSearch, keyword }} //when we use this context, this is the object that will be exposed to whatever component we want to use the context in
     >
       {children}
     </LocationContext.Provider>
