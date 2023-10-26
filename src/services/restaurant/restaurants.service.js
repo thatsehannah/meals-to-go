@@ -1,15 +1,15 @@
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
 
-export const restaurantsRequest = (location) => {
+export const restaurantsRequest = (coords) => {
   return new Promise((resolve, reject) => {
-    const mock = mocks[location];
+    const mock = mocks[coords];
 
     if (!mock) {
       reject("not found");
     }
 
-    console.log("Mock for location has been found");
+    console.log("Mock restaurants found");
     resolve(mock);
   });
 };

@@ -14,7 +14,7 @@ export const locationRequest = (searchTerm) => {
       reject("not found");
     }
 
-    console.log("Location found");
+    console.log("Mock Location found");
     resolve(locationMock);
   });
 };
