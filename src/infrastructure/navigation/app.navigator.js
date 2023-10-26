@@ -3,8 +3,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { RestaurantsScreen } from '../../features/restaurants/screens/restaurants.screen';
 import { SafeAreaContainer } from '../../components/utility/safe-area.component';
+import { RestaurantsNavigator } from './restaurants.navigator';
 
 const SettingsScreen = () => {
   return (
@@ -49,6 +49,7 @@ const createScreenOptions = ({ route }) => {
     ),
     tabBarActiveTintColor: 'tomato',
     tabBarInactiveTintColor: 'gray',
+    headerShown: false,
   };
 };
 
@@ -60,7 +61,7 @@ export const AppNavigator = () => {
       <Tab.Navigator screenOptions={createScreenOptions}>
         <Tab.Screen
           name='Restaurants'
-          component={RestaurantsScreen}
+          component={RestaurantsNavigator}
         />
         <Tab.Screen
           name='Map'
