@@ -11,9 +11,10 @@ import { CenteredView } from "../../../components/utility/centered-view.componen
 import { Search } from "../components/search.component";
 
 export const RestaurantsScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isRestaurantsLoading, error, restaurants } =
+    useContext(RestaurantsContext);
 
-  if (isLoading) {
+  if (isRestaurantsLoading) {
     return (
       <CenteredView>
         <ActivityIndicator size={50} animating={true} color="#0000ff" />

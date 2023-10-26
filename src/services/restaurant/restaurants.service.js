@@ -9,7 +9,6 @@ export const restaurantsRequest = (coords) => {
       reject("not found");
     }
 
-    console.log("Mock restaurants found");
     resolve(mock);
   });
 };
@@ -27,6 +26,6 @@ export const restaurantsTransform = ({ results = [] }) => {
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
     };
   });
-  console.log("Restaurants have been mapped");
+  //console.log("Restaurants have been mapped");
   return camelize(mappedResults);
 };

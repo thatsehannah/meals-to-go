@@ -8,17 +8,12 @@ export const Search = () => {
   const { keyword, search } = useContext(LocationContext); //destructuring the keyword value and search function from the context
   const [searchKeyword, setSearchKeyword] = useState(keyword); //setting the default state to the default value of keyword in the context
 
-  useEffect(() => {
-    search(searchKeyword);
-  }, []);
-
   return (
     <SearchContainer>
       <Searchbar
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => {
-          console.log("New search triggered");
           search(searchKeyword); //when we hit the enter or submit button in the search bar, this will trigger the search (from the context) to do what it does
         }}
         onChangeText={(text) => {

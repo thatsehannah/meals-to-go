@@ -6,7 +6,7 @@ export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLocationLoading, setIsLocationLoading] = useState(false);
   const [error, setError] = useState(null);
   const [keyword, setKeyword] = useState("San Francisco");
 
@@ -14,7 +14,7 @@ export const LocationContextProvider = ({ children }) => {
   //when this function is called, it will be provided with a search keyword argument
   //that will used in the locationRequest function
   const onSearch = (searchKeyword) => {
-    setIsLoading(true); //setting loading to true
+    setIsLocationLoading(true); //setting loading to true
     setKeyword(searchKeyword); //setting the keyword state to be equal to the argument provided
 
     if (!searchKeyword.length) {
@@ -24,19 +24,23 @@ export const LocationContextProvider = ({ children }) => {
     locationRequest(searchKeyword.toLowerCase()) //the searchkeyword will have to be lowercase in order to get the expected result back
       .then(locationTransform) //location request returns a promise, so we need to transform the data that we'll get back to get exactly what we need
       .then((locationResult) => {
-        setIsLoading(false);
+        setIsLocationLoading(false);
         setLocation(locationResult); //now that we have what we're looking for, set the location state to the result of the transformation (which returns an object)
-        console.log(locationResult);
+        //console.log(locationResult);
       })
       .catch((err) => {
-        setIsLoading(false);
+        setIsLocationLoading(false);
         setError(err);
       });
   };
 
+  useEffect(() => {
+    onSearch(keyword);
+  }, []);
+
   return (
     <LocationContext.Provider
-      value={{ isLoading, error, location, search: onSearch, keyword }} //when we use this context, this is the object that will be exposed to whatever component we want to use the context in
+      value={{ isLocationLoading, error, location, search: onSearch, keyword }} //when we use this context, this is the object that will be exposed to whatever component we want to use the context in
     >
       {children}
     </LocationContext.Provider>
