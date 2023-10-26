@@ -1,10 +1,10 @@
-import { useState, createContext, useEffect, useMemo, useContext } from "react";
+import { useState, createContext, useEffect, useMemo, useContext } from 'react';
 
 import {
   restaurantsRequest,
   restaurantsTransform,
-} from "./restaurants.service";
-import { LocationContext } from "../location/location.context";
+} from './restaurants.service';
+import { LocationContext } from '../location/location.context';
 
 export const RestaurantsContext = createContext();
 
@@ -30,7 +30,7 @@ export const RestaurantsContextProvider = ({ children }) => {
           setIsRestaurantsLoading(false);
           setError(err);
         });
-    }, 3000);
+    }, 2000);
   };
 
   useEffect(() => {
