@@ -6,22 +6,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaContainer } from '../../components/utility/safe-area.component';
 import { RestaurantsNavigator } from './restaurants.navigator';
 
+import { MapScreen } from '../../features/maps/screens/map.screen';
+
 const SettingsScreen = () => {
   return (
     <SafeAreaContainer
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <Text>Settings!</Text>
-    </SafeAreaContainer>
-  );
-};
-
-const MapScreen = () => {
-  return (
-    <SafeAreaContainer
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-    >
-      <Text>Map!</Text>
     </SafeAreaContainer>
   );
 };
