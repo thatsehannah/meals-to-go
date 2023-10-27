@@ -1,5 +1,5 @@
-import camelize from "camelize";
-import { locations } from "./location.mock";
+import camelize from 'camelize';
+import { locations } from './location.mock';
 
 //currently this functions acts as an API call. It takes a search term
 //that is being sent from the context and returns a Promise. The Promise
@@ -11,7 +11,7 @@ export const locationRequest = (searchTerm) => {
     const locationMock = locations[searchTerm];
 
     if (!locationMock) {
-      reject("not found");
+      reject('not found');
     }
 
     resolve(locationMock);
@@ -26,5 +26,5 @@ export const locationTransform = (result) => {
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
 
-  return { lat, lng };
+  return { lat, lng, viewport: geometry.viewport };
 };
