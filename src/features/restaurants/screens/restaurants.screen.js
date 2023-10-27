@@ -1,23 +1,30 @@
-import { useContext } from "react";
-import { ActivityIndicator } from "react-native-paper";
+import { useContext } from 'react';
+import { Pressable } from 'react-native';
+import { ActivityIndicator } from 'react-native-paper';
 
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
-import { SafeAreaContainer } from "../../../components/utility/safe-area.component";
-import { Spacer } from "../../../components/spacer/spacer.component";
-import { RestaurantList } from "./restaurants.screen.styles";
+import { RestaurantInfoCard } from '../components/restaurant-info-card.component';
+import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
+import { Spacer } from '../../../components/spacer/spacer.component';
+import { RestaurantList } from './restaurants.screen.styles';
 
-import { RestaurantsContext } from "../../../services/restaurant/restaurants.context";
-import { CenteredView } from "../../../components/utility/centered-view.component";
-import { Search } from "../components/search.component";
+import { RestaurantsContext } from '../../../services/restaurant/restaurants.context';
+import { CenteredView } from '../../../components/utility/centered-view.component';
+import { Search } from '../components/search.component';
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const { isRestaurantsLoading, error, restaurants } =
     useContext(RestaurantsContext);
+
+  console.log(navigation);
 
   if (isRestaurantsLoading) {
     return (
       <CenteredView>
-        <ActivityIndicator size={50} animating={true} color="#0000ff" />
+        <ActivityIndicator
+          size={50}
+          animating={true}
+          color='#0000ff'
+        />
       </CenteredView>
     );
   }
@@ -31,8 +38,15 @@ export const RestaurantsScreen = () => {
           renderItem={({ item }) => {
             return (
               <>
-                <RestaurantInfoCard restaurant={item} />
-                <Spacer position={"bottom"} size={"large"} />
+                <Pressable
+                  onPress={() => navigation.navigate('RestaurantDetail')}
+                >
+                  <RestaurantInfoCard restaurant={item} />
+                </Pressable>
+                <Spacer
+                  position={'bottom'}
+                  size={'large'}
+                />
               </>
             );
           }}
