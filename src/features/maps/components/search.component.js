@@ -6,11 +6,15 @@ import { LocationContext } from '../../../services/location/location.context';
 
 const SearchContainer = styled.View`
   padding: ${({ theme }) => theme.space[3]};
+  position: absolute;
+  z-index: 999;
+  top: 40px;
+  width: 100%;
 `;
 
 export const Search = () => {
-  const { keyword, search } = useContext(LocationContext); //destructuring the keyword value and search function from the context
-  const [searchKeyword, setSearchKeyword] = useState(keyword); //setting the default state to the default value of keyword in the context
+  const { keyword, search } = useContext(LocationContext);
+  const [searchKeyword, setSearchKeyword] = useState(keyword);
 
   useEffect(() => {
     setSearchKeyword(keyword);
@@ -20,12 +24,13 @@ export const Search = () => {
     <SearchContainer>
       <Searchbar
         placeholder='Search for a location'
+        icon='map-search'
         value={searchKeyword}
         onSubmitEditing={() => {
-          search(searchKeyword); //when we hit the enter or submit button in the search bar, this will trigger the search (from the context) to do what it does
+          search(searchKeyword);
         }}
         onChangeText={(text) => {
-          setSearchKeyword(text); //every time we type in the search bar, we're setting the keyword state to whatever we're typing
+          setSearchKeyword(text);
         }}
       />
     </SearchContainer>
