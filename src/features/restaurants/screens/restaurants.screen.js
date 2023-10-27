@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Pressable } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
 import { RestaurantInfoCard } from '../components/restaurant-info-card.component';
@@ -14,8 +14,6 @@ import { Search } from '../components/search.component';
 export const RestaurantsScreen = ({ navigation }) => {
   const { isRestaurantsLoading, error, restaurants } =
     useContext(RestaurantsContext);
-
-  console.log(navigation);
 
   if (isRestaurantsLoading) {
     return (
@@ -38,11 +36,11 @@ export const RestaurantsScreen = ({ navigation }) => {
           renderItem={({ item }) => {
             return (
               <>
-                <Pressable
+                <TouchableOpacity
                   onPress={() => navigation.navigate('RestaurantDetail')}
                 >
                   <RestaurantInfoCard restaurant={item} />
-                </Pressable>
+                </TouchableOpacity>
                 <Spacer
                   position={'bottom'}
                   size={'large'}

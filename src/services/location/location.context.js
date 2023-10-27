@@ -1,6 +1,6 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect } from 'react';
 
-import { locationRequest, locationTransform } from "./location.service";
+import { locationRequest, locationTransform } from './location.service';
 
 export const LocationContext = createContext();
 
@@ -8,7 +8,7 @@ export const LocationContextProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
   const [isLocationLoading, setIsLocationLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [keyword, setKeyword] = useState("San Francisco");
+  const [keyword, setKeyword] = useState('San Francisco');
 
   //function that will be called when you press search in the search bar
   //when this function is called, it will be provided with a search keyword argument
@@ -26,7 +26,6 @@ export const LocationContextProvider = ({ children }) => {
       .then((locationResult) => {
         setIsLocationLoading(false);
         setLocation(locationResult); //now that we have what we're looking for, set the location state to the result of the transformation (which returns an object)
-        //console.log(locationResult);
       })
       .catch((err) => {
         setIsLocationLoading(false);

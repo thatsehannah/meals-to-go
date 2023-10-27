@@ -1,5 +1,8 @@
 import { Text } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 
 import { RestaurantsScreen } from '../../features/restaurants/screens/restaurants.screen';
 
@@ -7,7 +10,13 @@ const RestaurantStack = createStackNavigator();
 
 export const RestaurantsNavigator = () => {
   return (
-    <RestaurantStack.Navigator screenOptions={{ headerShown: false }}>
+    <RestaurantStack.Navigator
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true, //need to include this for Android (defaults to false)
+        ...TransitionPresets.ModalPresentationIOS,
+      }}
+    >
       <RestaurantStack.Screen
         name='RestaurantMain'
         component={RestaurantsScreen}
