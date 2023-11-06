@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
@@ -10,10 +10,12 @@ import { RestaurantList } from './restaurants.screen.styles';
 import { RestaurantsContext } from '../../../services/restaurant/restaurants.context';
 import { CenteredView } from '../../../components/utility/centered-view.component';
 import { Search } from '../components/search.component';
+import { FavoritesBar } from '../../../components/favorites/favorites-bar.component';
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isRestaurantsLoading, error, restaurants } =
     useContext(RestaurantsContext);
+  const [isToggled, setIsToggled] = useState(false);
 
   if (isRestaurantsLoading) {
     return (
@@ -30,7 +32,11 @@ export const RestaurantsScreen = ({ navigation }) => {
   return (
     <>
       <SafeAreaContainer>
-        <Search />
+        <Search
+          isFavoritesToggled={isToggled}
+          onFavoritesToggle={() => setIsToggled(!isToggled)}
+        />
+        {isToggled && <FavoritesBar />}
         <RestaurantList
           data={restaurants}
           renderItem={({ item }) => {

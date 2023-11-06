@@ -8,7 +8,7 @@ const SearchContainer = styled.View`
   padding: ${({ theme }) => theme.space[3]};
 `;
 
-export const Search = () => {
+export const Search = ({ isFavoritesToggled, onFavoritesToggle }) => {
   const { keyword, search } = useContext(LocationContext); //destructuring the keyword value and search function from the context
   const [searchKeyword, setSearchKeyword] = useState(keyword); //setting the default state to the default value of keyword in the context
 
@@ -19,6 +19,8 @@ export const Search = () => {
   return (
     <SearchContainer>
       <Searchbar
+        icon={isFavoritesToggled ? 'heart' : 'heart-outline'}
+        onIconPress={onFavoritesToggle}
         placeholder='Search for a location'
         value={searchKeyword}
         onSubmitEditing={() => {
