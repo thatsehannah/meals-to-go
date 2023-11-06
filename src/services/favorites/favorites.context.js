@@ -6,6 +6,8 @@ export const FavoritesContext = createContext();
 export const FavoritesContextProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
+  //Note: since we're randomly generating the images of the restaurants, the images
+  //may look different on save than they will when your reload the app
   const saveFavorites = async (allFavorites) => {
     try {
       const jsonValue = JSON.stringify(allFavorites);
