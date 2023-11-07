@@ -8,6 +8,7 @@ import { RestaurantsContextProvider } from './src/services/restaurant/restaurant
 import { LocationContextProvider } from './src/services/location/location.context';
 import { FavoritesContextProvider } from './src/services/favorites/favorites.context';
 import { Navigation } from './src/infrastructure/navigation';
+import { AuthenticationContextProvider } from './src/services/auth/auth.context';
 
 export default App = () => {
   // loadFonts();
@@ -18,13 +19,15 @@ export default App = () => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavoritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavoritesContextProvider>
+        <AuthenticationContextProvider>
+          <FavoritesContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <Navigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavoritesContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style='auto' />
     </>

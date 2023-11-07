@@ -1,6 +1,5 @@
 import { Text, View } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { SafeAreaContainer } from '../../components/utility/safe-area.component';
@@ -49,21 +48,19 @@ export const AppNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={createScreenOptions}>
-        <Tab.Screen
-          name='Restaurants'
-          component={RestaurantsNavigator}
-        />
-        <Tab.Screen
-          name='Map'
-          component={MapScreen}
-        />
-        <Tab.Screen
-          name='Settings'
-          component={SettingsScreen}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={createScreenOptions}>
+      <Tab.Screen
+        name='Restaurants'
+        component={RestaurantsNavigator}
+      />
+      <Tab.Screen
+        name='Map'
+        component={MapScreen}
+      />
+      <Tab.Screen
+        name='Settings'
+        component={SettingsScreen}
+      />
+    </Tab.Navigator>
   );
 };
