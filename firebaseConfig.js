@@ -1,3 +1,4 @@
+// https://docs.expo.dev/guides/environment-variables/#migrating-to-expo-environment-variables
 export const firebaseConfig = {
   apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,

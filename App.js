@@ -1,6 +1,8 @@
 import 'react-native-gesture-handler';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 import { ThemeProvider } from 'styled-components/native';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from './firebaseConfig';
 
 import { theme } from './src/infrastructure/theme';
 import { loadFonts } from './src/utils/loadFonts';
@@ -9,6 +11,8 @@ import { LocationContextProvider } from './src/services/location/location.contex
 import { FavoritesContextProvider } from './src/services/favorites/favorites.context';
 import { Navigation } from './src/infrastructure/navigation';
 import { AuthenticationContextProvider } from './src/services/auth/auth.context';
+
+initializeApp(firebaseConfig);
 
 export default App = () => {
   // loadFonts();
