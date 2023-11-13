@@ -5,7 +5,14 @@ import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './firebaseConfig';
 
 import { theme } from './src/infrastructure/theme';
-import { loadFonts } from './src/utils/loadFonts';
+import {
+  useFonts as oswaldUseFonts,
+  Oswald_400Regular,
+} from '@expo-google-fonts/oswald';
+import {
+  useFonts as latoUseFonts,
+  Lato_400Regular,
+} from '@expo-google-fonts/lato';
 import { RestaurantsContextProvider } from './src/services/restaurant/restaurants.context';
 import { LocationContextProvider } from './src/services/location/location.context';
 import { FavoritesContextProvider } from './src/services/favorites/favorites.context';
@@ -15,7 +22,12 @@ import { AuthenticationContextProvider } from './src/services/auth/auth.context'
 initializeApp(firebaseConfig);
 
 export default App = () => {
-  // loadFonts();
+  let [osWaldLoaded] = oswaldUseFonts({ Oswald_400Regular });
+  let [latoLoaded] = latoUseFonts({ Lato_400Regular });
+
+  if (!osWaldLoaded || !latoLoaded) {
+    return null;
+  }
 
   // it makes senses to make the location context provider the top level provider
   // because the restaurants context provider will need the data provided from it

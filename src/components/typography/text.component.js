@@ -1,9 +1,8 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 //these styles will be applied to all variants (unless they're overwritten)
-// PUT THIS BACK -> font-family: ${theme.fonts.body};
 const defaultTextStyles = (theme) => `
-  
+  font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
   color: ${theme.colors.text.primary};
   flex-wrap: wrap;
@@ -28,8 +27,8 @@ const caption = (theme) => `
   font-weight: ${theme.fontWeights.bold};
 `;
 
-// PUT THIS BACK -> font-family: ${theme.fonts.heading};
 const label = (theme) => `
+  font-family: ${theme.fonts.heading};
   font-size: ${theme.fontSizes.body};
   font-weight: ${theme.fontWeights.medium};
 `;
@@ -58,5 +57,5 @@ export const Text = styled.Text`
 `;
 
 Text.defaultProps = {
-  variant: "body",
+  variant: 'body',
 };
