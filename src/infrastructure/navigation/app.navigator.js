@@ -1,18 +1,26 @@
-import { Text, View } from 'react-native';
+import { useContext } from 'react';
+import { Text } from 'react-native';
+import { AuthButton } from '../../features/account/components/account.styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { SafeAreaContainer } from '../../components/utility/safe-area.component';
 import { RestaurantsNavigator } from './restaurants.navigator';
+import { AuthenticationContext } from '../../services/auth/auth.context';
 
 import { MapScreen } from '../../features/maps/screens/map.screen';
+import { Spacer } from '../../components/spacer/spacer.component';
 
 const SettingsScreen = () => {
+  const { onLogout } = useContext(AuthenticationContext);
+
   return (
     <SafeAreaContainer
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
       <Text>Settings!</Text>
+      <Spacer />
+      <AuthButton onPress={() => onLogout()}>Logout</AuthButton>
     </SafeAreaContainer>
   );
 };
