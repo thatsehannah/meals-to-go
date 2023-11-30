@@ -14,8 +14,8 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(auth, email, password)
-      .then((u) => {
-        setUser(u);
+      .then((data) => {
+        setUser(data.user);
         setIsLoading(false);
       })
       .catch((e) => {
@@ -33,8 +33,8 @@ export const AuthenticationContextProvider = ({ children }) => {
 
     setIsLoading(true);
     registerRequest(auth, email, password)
-      .then((u) => {
-        setUser(u);
+      .then((data) => {
+        setUser(data.user);
         setIsLoading(false);
       })
       .catch((e) => {

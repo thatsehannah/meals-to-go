@@ -10,15 +10,18 @@ import { AuthenticationContext } from '../../services/auth/auth.context';
 
 import { MapScreen } from '../../features/maps/screens/map.screen';
 import { Spacer } from '../../components/spacer/spacer.component';
+import { FavoritesContextProvider } from '../../services/favorites/favorites.context';
+import { LocationContextProvider } from '../../services/location/location.context';
+import { RestaurantsContextProvider } from '../../services/restaurant/restaurants.context';
 
 const SettingsScreen = () => {
-  const { onLogout } = useContext(AuthenticationContext);
+  const { onLogout, user } = useContext(AuthenticationContext);
 
   return (
     <SafeAreaContainer
       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
     >
-      <Text>Settings!</Text>
+      <Text>Current user: {user.email}</Text>
       <Spacer />
       <AuthButton onPress={() => onLogout()}>Logout</AuthButton>
     </SafeAreaContainer>
@@ -56,19 +59,25 @@ export const AppNavigator = () => {
   const Tab = createBottomTabNavigator();
 
   return (
-    <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen
-        name='Restaurants'
-        component={RestaurantsNavigator}
-      />
-      <Tab.Screen
-        name='Map'
-        component={MapScreen}
-      />
-      <Tab.Screen
-        name='Settings'
-        component={SettingsScreen}
-      />
-    </Tab.Navigator>
+    <FavoritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <Tab.Navigator screenOptions={createScreenOptions}>
+            <Tab.Screen
+              name='Restaurants'
+              component={RestaurantsNavigator}
+            />
+            <Tab.Screen
+              name='Map'
+              component={MapScreen}
+            />
+            <Tab.Screen
+              name='Settings'
+              component={SettingsScreen}
+            />
+          </Tab.Navigator>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </FavoritesContextProvider>
   );
 };
