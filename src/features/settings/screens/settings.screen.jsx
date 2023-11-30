@@ -1,21 +1,52 @@
 import { useContext } from 'react';
-import { Text } from 'react-native';
-
+import { List } from 'react-native-paper';
 import { AuthenticationContext } from '../../../services/auth/auth.context';
 import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
 import { Spacer } from '../../../components/spacer/spacer.component';
-import { AuthButton } from '../../account/components/account.styles';
 
-export const SettingsScreen = () => {
+export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
 
   return (
-    <SafeAreaContainer
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-    >
-      <Text>Current user: {user.email}</Text>
-      <Spacer />
-      <AuthButton onPress={() => onLogout()}>Logout</AuthButton>
+    <SafeAreaContainer>
+      <List.Section>
+        <List.Item
+          style={{ padding: 16 }}
+          title={`Logged in as ${user.email}`}
+          left={(props) => (
+            <List.Icon
+              {...props}
+              color='black'
+              icon='account'
+            />
+          )}
+        />
+        <List.Item
+          style={{ padding: 16 }}
+          title='Favorites'
+          description='View your favorites'
+          onPress={() => navigation.navigate('Favorites')}
+          left={(props) => (
+            <List.Icon
+              {...props}
+              color='black'
+              icon='heart'
+            />
+          )}
+        />
+        <List.Item
+          style={{ padding: 16 }}
+          title='Log Out'
+          onPress={onLogout}
+          left={(props) => (
+            <List.Icon
+              {...props}
+              color='black'
+              icon='logout'
+            />
+          )}
+        />
+      </List.Section>
     </SafeAreaContainer>
   );
 };

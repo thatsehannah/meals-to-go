@@ -8,6 +8,7 @@ import { SettingsScreen } from '../../features/settings/screens/settings.screen'
 import { FavoritesContextProvider } from '../../services/favorites/favorites.context';
 import { LocationContextProvider } from '../../services/location/location.context';
 import { RestaurantsContextProvider } from '../../services/restaurant/restaurants.context';
+import { SettingsNavigator } from './settings.navigator';
 
 //object that uses the name of the route defined in Tab.Screen as the key
 //and the icon name from @expo/vector-icons/Ionicons as the value to easily
@@ -54,7 +55,7 @@ export const AppNavigator = () => {
             />
             <Tab.Screen
               name='Settings'
-              component={SettingsScreen}
+              component={SettingsNavigator}
             />
           </Tab.Navigator>
         </RestaurantsContextProvider>
