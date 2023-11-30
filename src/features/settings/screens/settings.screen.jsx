@@ -1,17 +1,26 @@
 import { useContext } from 'react';
-import { List } from 'react-native-paper';
+import { List, Avatar } from 'react-native-paper';
 import { AuthenticationContext } from '../../../services/auth/auth.context';
 import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
 import { Spacer } from '../../../components/spacer/spacer.component';
+import {
+  SettingsItem,
+  AvatarContainer,
+} from '../components/settings.screen.styles';
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
 
   return (
     <SafeAreaContainer>
+      <AvatarContainer>
+        <Avatar.Icon
+          size={180}
+          icon='human'
+        />
+      </AvatarContainer>
       <List.Section>
-        <List.Item
-          style={{ padding: 16 }}
+        <SettingsItem
           title={`Logged in as ${user.email}`}
           left={(props) => (
             <List.Icon
@@ -21,8 +30,7 @@ export const SettingsScreen = ({ navigation }) => {
             />
           )}
         />
-        <List.Item
-          style={{ padding: 16 }}
+        <SettingsItem
           title='Favorites'
           description='View your favorites'
           onPress={() => navigation.navigate('Favorites')}
@@ -34,8 +42,7 @@ export const SettingsScreen = ({ navigation }) => {
             />
           )}
         />
-        <List.Item
-          style={{ padding: 16 }}
+        <SettingsItem
           title='Log Out'
           onPress={onLogout}
           left={(props) => (
