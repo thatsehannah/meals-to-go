@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { List, Avatar } from 'react-native-paper';
 import { AuthenticationContext } from '../../../services/auth/auth.context';
 import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
-import { Spacer } from '../../../components/spacer/spacer.component';
 import {
   SettingsItem,
   AvatarContainer,

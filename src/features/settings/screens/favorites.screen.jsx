@@ -6,7 +6,7 @@ import { RestaurantList } from '../../restaurants/components/restaurant-list.com
 import { CenteredView } from '../../../components/utility/centered-view.component';
 import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
 
-export const FavoritesScreen = () => {
+export const FavoritesScreen = ({ navigation }) => {
   const { favorites } = useContext(FavoritesContext);
 
   if (favorites.length === 0) {
@@ -19,7 +19,10 @@ export const FavoritesScreen = () => {
 
   return (
     <SafeAreaContainer>
-      <RestaurantList restaurants={favorites} />
+      <RestaurantList
+        restaurants={favorites}
+        navigation={navigation}
+      />
     </SafeAreaContainer>
   );
 };
