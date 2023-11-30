@@ -1,7 +1,7 @@
 import { useState, createContext } from 'react';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 
-import { loginRequest } from './auth.service';
+import { loginRequest, registerRequest } from './auth.service';
 
 export const AuthenticationContext = createContext();
 
@@ -16,6 +16,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     loginRequest(auth, email, password)
       .then((u) => {
         setUser(u);
+        setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -28,9 +29,12 @@ export const AuthenticationContextProvider = ({ children }) => {
       setError('Error: Passwords do not match');
       return;
     }
-    createUserWithEmailAndPassword(auth, email, password)
+
+    setIsLoading(true);
+    registerRequest(auth, email, password)
       .then((u) => {
         setUser(u);
+        setIsLoading(false);
       })
       .catch((e) => {
         setIsLoading(false);
