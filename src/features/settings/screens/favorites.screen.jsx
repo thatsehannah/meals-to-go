@@ -22,6 +22,7 @@ export const FavoritesScreen = ({ navigation }) => {
       <RestaurantList
         restaurants={favorites}
         navigation={navigation}
+        screenName='Settings_RestaurantDetails'
       />
     </SafeAreaContainer>
   );

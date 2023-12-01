@@ -45,6 +45,7 @@ export const RestaurantsScreen = ({ navigation }) => {
         <RestaurantList
           restaurants={restaurants}
           navigation={navigation}
+          screenName='RestaurantDetail'
         />
       </FadeInView>
     </SafeAreaContainer>

@@ -9,7 +9,7 @@ const List = styled.FlatList.attrs({
   },
 })``;
 
-export const RestaurantList = ({ navigation, restaurants }) => {
+export const RestaurantList = ({ navigation, restaurants, screenName }) => {
   return (
     <List
       data={restaurants}
@@ -18,7 +18,7 @@ export const RestaurantList = ({ navigation, restaurants }) => {
           <>
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate('RestaurantDetail', {
+                navigation.navigate(screenName, {
                   restaurant: item,
                 })
               }
