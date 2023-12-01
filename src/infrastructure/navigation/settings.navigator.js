@@ -16,7 +16,10 @@ export const SettingsNavigator = () => {
       }}
     >
       <SettingsStack.Screen
-        name='Settings'
+        name='SettingsMain'
+        options={{
+          title: 'Settings',
+        }}
         component={SettingsScreen}
       />
       <SettingsStack.Screen
