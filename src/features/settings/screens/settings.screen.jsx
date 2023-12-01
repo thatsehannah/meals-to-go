@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { Pressable } from 'react-native';
 import { List, Avatar } from 'react-native-paper';
 import { AuthenticationContext } from '../../../services/auth/auth.context';
 import { SafeAreaContainer } from '../../../components/utility/safe-area.component';
@@ -13,11 +14,14 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeAreaContainer>
       <AvatarContainer>
-        <Avatar.Icon
-          size={180}
-          icon='human'
-        />
+        <Pressable onPress={() => navigation.navigate('Camera')}>
+          <Avatar.Icon
+            size={180}
+            icon='human'
+          />
+        </Pressable>
       </AvatarContainer>
+
       <List.Section>
         <SettingsItem
           title={`Logged in as ${user.email}`}

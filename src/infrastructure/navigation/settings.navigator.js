@@ -5,6 +5,7 @@ import {
 } from '@react-navigation/stack';
 import { SettingsScreen } from '../../features/settings/screens/settings.screen';
 import { FavoritesScreen } from '../../features/settings/screens/favorites.screen';
+import { CameraScreen } from '../../features/settings/screens/camera.screen';
 import { RestaurantsDetailScreen } from '../../features/restaurants/screens/restaurants-details.screen';
 import { modalOptions } from './utilites/screenOptions';
 
@@ -33,6 +34,10 @@ export const SettingsNavigator = () => {
         name='Settings_RestaurantDetails'
         options={modalOptions}
         component={RestaurantsDetailScreen}
+      />
+      <SettingsStack.Screen
+        name='Camera'
+        component={CameraScreen}
       />
     </SettingsStack.Navigator>
   );
