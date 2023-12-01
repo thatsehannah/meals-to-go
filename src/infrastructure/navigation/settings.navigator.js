@@ -6,6 +6,7 @@ import {
 import { SettingsScreen } from '../../features/settings/screens/settings.screen';
 import { FavoritesScreen } from '../../features/settings/screens/favorites.screen';
 import { RestaurantsDetailScreen } from '../../features/restaurants/screens/restaurants-details.screen';
+import { modalOptions } from './utilites/screenOptions';
 
 const SettingsStack = createStackNavigator();
 
@@ -30,11 +31,7 @@ export const SettingsNavigator = () => {
       />
       <SettingsStack.Screen
         name='Settings_RestaurantDetails'
-        options={{
-          gestureEnabled: true,
-          headerShown: false,
-          ...TransitionPresets.ModalPresentationIOS,
-        }}
+        options={modalOptions}
         component={RestaurantsDetailScreen}
       />
     </SettingsStack.Navigator>
